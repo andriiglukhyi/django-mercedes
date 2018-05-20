@@ -17,7 +17,7 @@ install:
 
 script:
   - python mercedes/manage.py migrate
-  - coverage run mercedes/manage.py test imagersite
+  - coverage run mercedes/manage.py test mercedes
 
 after_success:
   - coveralls
