@@ -1,4 +1,4 @@
-{% load sass_tags %}
+{% comment %} {% load sass_tags %} {% endcomment %}
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
@@ -7,7 +7,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>{{title}}</title>
-  <!-- <link rel=stylesheet href="{% sass_src 'styles/_core.scss' %}"> -->
   <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Gamja+Flower|Monoton|Montserrat|Slabo+27px" rel="stylesheet">
 
 </head>
@@ -17,11 +16,11 @@
       <ul>
         <li><a href="{% url "home" %}">Home</a></li>
         {% if user.is_authenticated %}
-        <li><a href="{% url "library" %}">Library</a></li>
-        <li><a href="{% url "album_gallery" %}">Explore</a></li>
+        {% comment %} {% comment %} <li><a href="{% url "library" %}">Library</a></li> {% endcomment %}
+        {% comment %} <li><a href="{% url "album_gallery" %}">Explore</a></li> {% endcomment %}
         <li><a href="{% url "auth_logout" %}">Logout</a></li>
         {% else %}
-        <li><a href="{% url "album_gallery" %}">Explore</a></li>
+        {% comment %} <li><a href="{% url "album_gallery" %}">Explore</a></li> {% endcomment %}
         <li><a href="{% url "registration_register" %}">Signup</a></li>
         <li><a href="{% url "auth_login" %}">Signin</a></li>
         {% endif %}
