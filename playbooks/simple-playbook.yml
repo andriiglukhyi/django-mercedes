@@ -27,8 +27,8 @@
 
     - name: clone repo here
       git:
-        repo: 'https://github.com/captain-c00keys/django-imager.git'
-        dest: /home/ubuntu/django-imager
+        repo: 'https://github.com/andriiglukhyi/django-mercedes.git'
+        dest: /home/ubuntu/django-mercedes
         clone: yes
         update: yes
 
