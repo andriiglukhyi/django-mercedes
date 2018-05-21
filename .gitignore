@@ -228,3 +228,6 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+# ansible
+hosts
