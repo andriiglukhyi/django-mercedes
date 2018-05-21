@@ -2,11 +2,11 @@
 - hosts: us-west-2
   remote_user: ubuntu
   environment:
-    SECRET_KEY: {{ secret_key }}
-    DB_NAME: {{ db_name }}
-    DB_USER: {{ db_user }}
-    DB_PASSWORD: {{ db_password }}
-    DB_HOST: {{ db_host }}
+    SECRET_KEY: "{{ secret_key }}"
+    DB_NAME: "{{ db_name }}"
+    DB_USER: "{{ db_user }}"
+    DB_PASSWORD: "{{ db_password }}"
+    DB_HOST: "{{ db_host }}"
   tasks:
     - name: Update the base Unbutu image
       apt: update_cache=yes
