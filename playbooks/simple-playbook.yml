@@ -37,6 +37,14 @@
       become: yes
       become_method: sudo
 
+
+    - name: Install the requirements
+      pip:
+        requirements: /home/ubuntu/django-mercedes/requirements.txt
+        virtualenv: /home/ubuntu/ENV
+      become: yes
+      become_method: sudo
+
     - name: Install Gunicorn into Virtual Environment
       pip: 
         virtualenv: /home/ubuntu/ENV 
