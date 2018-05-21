@@ -1,5 +1,5 @@
 [Unit]
-Description=gunicorn daemon for imager
+Description=gunicorn daemon for mercedes
 After=network.target
 
 [Service]
@@ -13,8 +13,8 @@ Environment=ALLOWED_HOST={{ server_dns }} localhost
 
 User=ubuntu
 Group=www-data
-WorkingDirectory=/home/ubuntu/django-imager/imagersite/
-ExecStart=/usr/bin/gunicorn --access-logfile - --workers 3 --bind 127.0.0.1:8000 imagersite.wsgi:application
+WorkingDirectory=/home/ubuntu/django-mercedes/mercedes
+ExecStart=/usr/bin/gunicorn --access-logfile - --workers 3 --bind 127.0.0.1:8000 mercedes.wsgi:application
 
 [Install]
 WantedBy=multi-user.target

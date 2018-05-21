@@ -3,7 +3,7 @@
   remote_user: ubuntu
   environment:
     SECRET_KEY={{ secret_key }}
-    DB_Name={{ db_name }}
+    DB_NAME={{ db_name }}
     DB_USER={{ db_user }}
     DB_PASSWORD={{ db_password }}
     DB_HOST={{ db_host }}
