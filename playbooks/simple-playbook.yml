@@ -37,7 +37,6 @@
       become: yes
       become_method: sudo
 
-
     - name: Install the requirements
       pip:
         requirements: /home/ubuntu/django-mercedes/requirements.txt
@@ -45,10 +44,29 @@
       become: yes
       become_method: sudo
 
+    - name: Migrate the database
+      django_manage:
+        command: migrate
+        app_path: /home/ubuntu/django-mercedes/mercedes
+        virtualenv: /home/ubuntu/ENV
+
+    # - name: collect static
+    #   django_manage:
+    #     command: collectstatic
+    #     app_path: /home/ubuntu/django-mercedes/mercedes
+    #     virtualenv: /home/ubuntu/ENV
+
     - name: Install Gunicorn into Virtual Environment
       pip: 
         virtualenv: /home/ubuntu/ENV 
         name: gunicorn
+      become: yes
+      become_method: sudo
+    
+    - name: Create gunicorn.service file
+      template:
+        src: templates/gunicorn.service
+        dest: /etc/systemd/system/gunicorn.service
       become: yes
       become_method: sudo
 
@@ -68,3 +86,29 @@
         dest: /etc/nginx/sites-available/default
       become: yes
       become_method: sudo
+    
+    - name: Stop gunicorn
+      command: systemctl stop gunicorn
+      become: yes
+      become_method: sudo
+
+    - name: Enable nginx
+      command: systemctl enable nginx
+      become: yes
+      become_method: sudo
+
+    - name: Enable gunicorn
+      command: systemctl enable gunicorn
+      become: yes
+      become_method: sudo
+
+    - name: Start nginx
+      command: systemctl restart nginx
+      become: yes
+      become_method: sudo
+
+    - name: Start gunicorn
+      command: systemctl start gunicorn
+      become: yes
+      become_method: sudo
+
