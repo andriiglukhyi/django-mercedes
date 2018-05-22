@@ -38,7 +38,7 @@
       become_method: sudo
     
     - name: upgrade pip
-      command: pip install --upgrade pip
+      command: pip3 install --upgrade pip
       become: yes
       become_method: sudo
 
