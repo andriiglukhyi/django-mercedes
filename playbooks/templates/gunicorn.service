@@ -1,0 +1,20 @@
+[Unit]
+Description=gunicorn daemon for mercedes
+After=network.target
+
+[Service]
+Environment=Debug=
+Environment=DB_Name={{ db_name }}
+Environment=SECRET_KEY={{ secret_key }}
+Environment=DB_USER={{ db_user }}
+Environment=DB_PASSWORD={{ db_password }}
+Environment=DB_HOST={{ db_host }}
+Environment=ALLOWED_HOST={{ server_dns }} localhost
+
+User=ubuntu
+Group=www-data
+WorkingDirectory=/home/ubuntu/django-mercedes/mercedes
+ExecStart=/home/ubuntu/ENV/bin/gunicorn --access-logfile - --workers 3 --bind 127.0.0.1:8000 mercedes.wsgi:application
+
+[Install]
+WantedBy=multi-user.target
