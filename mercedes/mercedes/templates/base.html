@@ -28,7 +28,7 @@
     </nav>
   </header>
   <main>
-    {% if user.is_authenticated %}
+    {% comment %} {% if user.is_authenticated %}
     <div class="side-nav">
         <div class="side-nav-container">
           <div class="menu-icon"><h4>|||</h4></div>
@@ -39,7 +39,7 @@
           <li><a href="{% url "photo_add" %}">New Photo</a></li>
         </div>
       </div>
-      {% endif %}
+      {% endif %} {% endcomment %}
 
     {% block content %}
     <h3>No Content</h3>
